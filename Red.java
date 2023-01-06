@@ -12,6 +12,7 @@ public class Red extends Actor
      * Act - do whatever the Red wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
     public void act()
     {
         // Lights up when mouse is hovered over
@@ -22,6 +23,11 @@ public class Red extends Actor
         
         // If clicked, the user has chosen to escape the matrix and the game begins.
         if (Greenfoot.mouseClicked(this)) {
+            Title W = (Title) getWorld();
+            W.getObjects(Logo.class).get(0).endMusic();
+            GreenfootSound music = new GreenfootSound("click.mp3");
+            music.setVolume(40);
+            music.play();
             Greenfoot.setWorld(new Intro());
         }
     }
