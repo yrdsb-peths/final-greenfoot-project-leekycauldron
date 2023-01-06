@@ -15,10 +15,14 @@ public class Logo extends Actor
     boolean full = false;
     int w = 1;
     int h = 1;
+    GreenfootSound music = new GreenfootSound("title.mp3");
     public Logo(){
         GreenfootImage image = new GreenfootImage("logo.png");
         setImage(image);
         image.scale(w, h);
+    }
+    public void endMusic() {
+        music.stop();
     }
     public void act()
     {
@@ -31,6 +35,9 @@ public class Logo extends Actor
             image.scale(w, h);
             if(w >= 300){
                 full = true;
+                
+                music.setVolume(20);
+                music.playLoop();
             }
         }
     }

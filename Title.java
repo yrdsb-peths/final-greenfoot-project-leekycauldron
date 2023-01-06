@@ -18,6 +18,7 @@ public class Title extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
         prepare();
+        
     }
     
     /**
@@ -26,11 +27,11 @@ public class Title extends World
      */
     private void prepare()
     {
+
         GreenfootImage background = getBackground();//Create Image
         background.setColor(new Color(33,13,64));//Add Background color
         background.fillRect(0,0,getWidth(),getHeight());
-        
-        
+
         // Add the stars
         for (int i = 0; i < 300; i++) {
             Star star = new Star();
@@ -38,17 +39,18 @@ public class Title extends World
             int y = Greenfoot.getRandomNumber(getHeight());
             addObject(star,x,y);
         }
-        
+
         // Add the Logo
         Logo logo = new Logo();
         addObject(logo,getWidth()/2,getHeight()/2);
-        
-        
-        // Display the Red and Blue pills to allow user to select (Red starts game, blue restarts title sequence).
+
+        // Add the start button.
         Red red = new Red();
-        Blue blue = new Blue();
-        
+     
+
         addObject(red,300,500);
-        addObject(blue,500,520);
+    
+
+        
     }
 }
