@@ -17,6 +17,7 @@ public class Main extends World
     public boolean gates = true;
     public int worldSpeed = 3;
     public int playerSpeed = 4;
+    private SimpleTimer timer = new SimpleTimer();
     public Main()
     {    
         super(400, 600, 1);
@@ -63,6 +64,10 @@ public class Main extends World
     }
     public int getGate(){
         return Greenfoot.getRandomNumber(4);
+    }
+    
+    public int getTime() {
+        return 60000 - this.timer.millisElapsed();
     }
     
     
@@ -113,15 +118,21 @@ public class Main extends World
 
         // Play background music
         GreenfootSound music = new GreenfootSound("winter.mp3");
-        music.playLoop();
-
+        //music.playLoop();
+        
+        
+        // Add the progress bar (timer).
+        Progress p = new Progress();
+        addObject(p,getWidth()/2,40);
    
     }
     
     public void act() {
-        if(getObjects(Player.class).get(0).value <= 0){
+        if(getObjects(Player.class).get(0).value <= 0 
+        || this.timer.millisElapsed() >= 60000){
             gameOver();   
         }
+        
 
     }
 }
