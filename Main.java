@@ -24,6 +24,11 @@ public class Main extends World
         
     }
     
+    public void gameOver() {
+        End end = new End();
+        Greenfoot.setWorld(end);
+    }
+    
     
     public void respawn() {
         
@@ -60,7 +65,9 @@ public class Main extends World
         return Greenfoot.getRandomNumber(4);
     }
     
+    
     public void spawnGates() {
+        // TODO: make at least one gate above zero.
         for(int i = 0; i < 3;i++ ){
             
             if (getGate() == 0){
@@ -83,18 +90,17 @@ public class Main extends World
             
         }
     }
+    
     public void prepare() {
         // Set Background to complete darkness.
         GreenfootImage background = getBackground();
         background.setColor(Color.BLACK);//Add Background color
         background.fillRect(0,0,getWidth(),getHeight());
-        
-        
+
         // Spawn in the player.
         Player player = new Player(20,this.playerSpeed);
         addObject(player,getWidth()/2,getHeight()-75);
-        
-        
+
         // Add the stars
         for (int i = 0; i < 300; i++) {
             Star star = new Star();
@@ -104,16 +110,18 @@ public class Main extends World
         }
         // Add the gates
         spawnGates();
-        
+
         // Play background music
         GreenfootSound music = new GreenfootSound("winter.mp3");
         music.playLoop();
-        
-    
+
    
     }
     
     public void act() {
+        if(getObjects(Player.class).get(0).value <= 0){
+            gameOver();   
+        }
 
     }
 }

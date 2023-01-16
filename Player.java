@@ -21,12 +21,16 @@ public class Player extends Actor
     boolean forward = true; 
     long last = System.currentTimeMillis();
     
+    // Costumes 
+    String[] costumes = {"rocket1.png","rocket2.png","rocket3.png"};
+    int cIdx = 1;
+    
     public Player(int value, int speed) {
         this.speed = speed;
         this.value = value;
         GreenfootImage image = getImage();
         setImage(image);
-        image.scale(100, 100);
+        image.scale(90, 130);
     }
     public void setSpeed(int s) {
         this.speed = s;
@@ -43,14 +47,25 @@ public class Player extends Actor
     {
         // Listen for left and right arrow keys to move the player side to side.
         getWorld().removeObject(label);
-        label = new Label(this.value,40);
-        getWorld().addObject (label, getX(), getY()+20);
+        label = new Label("$" + this.value,40);
+        label.setFillColor(Color.GREEN);
+        getWorld().addObject (label, getWorld().getWidth()/2, getWorld().getHeight()-20);
         if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")) {
             setLocation(getX()-this.speed,getY());
         }
         if(Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")) {
             setLocation(getX()+this.speed,getY());
         }
+        
+        // Set Costume
+        int x = cIdx %10;
+        if(x < 3) {
+            GreenfootImage image = new GreenfootImage(costumes[x]);
+            setImage(image);
+            image.scale(90, 130);
+        }
+        
+        cIdx++;
         
         // Move forward and back every 1 second.
         if (forward){
