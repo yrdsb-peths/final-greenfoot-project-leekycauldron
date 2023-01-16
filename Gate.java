@@ -26,6 +26,7 @@ public class Gate extends Actor
     }
     
     public void move(int x,int y) {
-        setLocation(x,y+2);
+        Main world = (Main) getWorld();
+        setLocation(x,y+world.worldSpeed);
     }
 }

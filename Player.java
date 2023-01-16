@@ -28,7 +28,9 @@ public class Player extends Actor
         setImage(image);
         image.scale(100, 100);
     }
-    
+    public void setSpeed(int s) {
+        this.speed = s;
+    }
     public void add(int n) {
         getWorld().getObjects(Player.class).get(0).value += n;
     }

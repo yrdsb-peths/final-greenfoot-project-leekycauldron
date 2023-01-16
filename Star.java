@@ -39,7 +39,8 @@ public class Star extends Actor
             setImage(img);
         }
         setRotation(270);
-        move(-2);
+        Main world = (Main) getWorld();
+        move(world.worldSpeed*-1);
         if(isAtEdge()) {
             setLocation(getX(),0);
         }

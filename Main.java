@@ -15,6 +15,8 @@ public class Main extends World
      */
     public boolean respawn = false;
     public boolean gates = true;
+    public int worldSpeed = 3;
+    public int playerSpeed = 4;
     public Main()
     {    
         super(400, 600, 1);
@@ -25,16 +27,17 @@ public class Main extends World
     
     public void respawn() {
         
-        Gate gate = getObjects(Gate.class).get(0);
-        gate.removeLabel();
-        removeObject(gate);
         
-        gate = getObjects(Gate.class).get(0);
-        gate.removeLabel();
-        removeObject(gate);
+        for(int i =0; i < 3;i++){
+            Gate gate = getObjects(Gate.class).get(0);
+            gate.removeLabel();
+            removeObject(gate);
+        }
+        
         
         
         spawnGates();
+        
     }
     public void add(int n) {
         getObjects(Player.class).get(0).value += n;
@@ -58,23 +61,23 @@ public class Main extends World
     }
     
     public void spawnGates() {
-        for(int i = 0; i < 2;i++ ){
+        for(int i = 0; i < 3;i++ ){
             
             if (getGate() == 0){
                 MinusGate gate = new MinusGate();
-                addObject(gate,75 + (250*i),75);
+                addObject(gate,75 + (125*i),75);
             }
             else if (getGate() == 1){
                 PlusGate gate = new PlusGate();
-                addObject(gate,75 + (250*i),75);
+                addObject(gate,75 + (125*i),75);
             }
             else if (getGate() == 2){
                 MultiplyGate gate = new MultiplyGate();
-                addObject(gate,75 + (250*i),75);
+                addObject(gate,75 + (125*i),75);
             }
             else{
                 DivideGate gate = new DivideGate();
-                addObject(gate,75 + (250*i),75);
+                addObject(gate,75 + (125*i),75);
             }
             
             
@@ -88,7 +91,7 @@ public class Main extends World
         
         
         // Spawn in the player.
-        Player player = new Player(20,3);
+        Player player = new Player(20,this.playerSpeed);
         addObject(player,getWidth()/2,getHeight()-75);
         
         
@@ -111,9 +114,6 @@ public class Main extends World
     }
     
     public void act() {
-        
-        
-        
-        
+
     }
 }
