@@ -38,5 +38,11 @@ public class Star extends Actor
             img.scale(1, 1);
             setImage(img);
         }
+        setRotation(270);
+        move(-2);
+        if(isAtEdge()) {
+            setLocation(getX(),0);
+        }
     }
+    
 }
