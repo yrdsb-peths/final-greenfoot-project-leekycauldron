@@ -34,10 +34,7 @@ public class Main extends World
         removeObject(gate);
         
         
-        MinusGate mgate = new MinusGate();
-        addObject(mgate,75,75);
-        PlusGate pgate = new PlusGate();
-        addObject(pgate,325,75);
+        spawnGates();
     }
     public void add(int n) {
         getObjects(Player.class).get(0).value += n;
@@ -48,7 +45,41 @@ public class Main extends World
         getObjects(Player.class).get(0).value -= n;
         respawn();
     }
+    public void multiply(int n) {
+        getObjects(Player.class).get(0).value *= n;
+        respawn();
+    }
+    public void divide(int n) {
+        getObjects(Player.class).get(0).value /= n;
+        respawn();
+    }
+    public int getGate(){
+        return Greenfoot.getRandomNumber(4);
+    }
     
+    public void spawnGates() {
+        for(int i = 0; i < 2;i++ ){
+            
+            if (getGate() == 0){
+                MinusGate gate = new MinusGate();
+                addObject(gate,75 + (250*i),75);
+            }
+            else if (getGate() == 1){
+                PlusGate gate = new PlusGate();
+                addObject(gate,75 + (250*i),75);
+            }
+            else if (getGate() == 2){
+                MultiplyGate gate = new MultiplyGate();
+                addObject(gate,75 + (250*i),75);
+            }
+            else{
+                DivideGate gate = new DivideGate();
+                addObject(gate,75 + (250*i),75);
+            }
+            
+            
+        }
+    }
     public void prepare() {
         // Set Background to complete darkness.
         GreenfootImage background = getBackground();
@@ -69,13 +100,11 @@ public class Main extends World
             addObject(star,x,y);
         }
         // Add the gates
-        MinusGate mgate = new MinusGate();
-        addObject(mgate,75,75);
-        PlusGate pgate = new PlusGate();
-        addObject(pgate,325,75);
+        spawnGates();
+        
     
    
-}
+    }
     
     public void act() {
         
