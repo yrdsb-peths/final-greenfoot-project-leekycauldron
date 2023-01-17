@@ -49,5 +49,9 @@ public class Start extends World
             Main main = new Main();
             Greenfoot.setWorld(main);
         }
+        else if (Greenfoot.isKeyDown("2")) {
+            Tutorial tut = new Tutorial();
+            Greenfoot.setWorld(tut);
+        }
     }
 }
