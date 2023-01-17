@@ -118,7 +118,7 @@ public class Main extends World
 
         // Play background music
         GreenfootSound music = new GreenfootSound("winter.mp3");
-        //music.playLoop();
+        music.playLoop();
         
         
         // Add the progress bar (timer).
@@ -129,7 +129,7 @@ public class Main extends World
     
     public void act() {
         if(getObjects(Player.class).get(0).value <= 0 
-        || this.timer.millisElapsed() >= 60000){
+        || this.timer.millisElapsed() >= 59999){
             gameOver();   
         }
         

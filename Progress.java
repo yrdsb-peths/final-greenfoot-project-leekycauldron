@@ -23,6 +23,6 @@ public class Progress extends Actor
         Main world = (Main) getWorld();
         GreenfootImage image = getImage();
         setImage(image);
-        image.scale((int)(350 * (double)(world.getTime()/60000.0)), 50);
+        image.scale((int)(350 * (double)(world.getTime()/60000.0))+1, 50);
     }
 }
