@@ -12,7 +12,7 @@ public class MinusGate extends Gate
      * Act - do whatever the MinusGate wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int value = Greenfoot.getRandomNumber(20);
+    int value = Greenfoot.getRandomNumber(19);
     Label label = new Label("-"+value,40);
     public MinusGate() {
         super("minusGate.png");

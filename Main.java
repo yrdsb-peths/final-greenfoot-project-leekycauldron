@@ -21,6 +21,7 @@ public class Main extends World
     private SimpleTimer timer = new SimpleTimer();
     private SimpleTimer dTimer = new SimpleTimer();
     Damage d = new Damage();
+    int tens = 0;
     public Main()
     {    
         super(400, 600, 1);
@@ -141,6 +142,13 @@ public class Main extends World
         if(damage && this.dTimer.millisElapsed() >= 1000){
             damage = false;
             removeObject(d);
+        }
+        
+        if(this.timer.millisElapsed() / 10000 > this.tens) {
+            this.tens = this.timer.millisElapsed() / 10000;
+            this.playerSpeed++;
+            getObjects(Player.class).get(0).setSpeed(this.playerSpeed);
+            this.worldSpeed++;
         }
 
     }
