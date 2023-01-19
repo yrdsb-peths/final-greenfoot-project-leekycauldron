@@ -35,7 +35,9 @@ public class PlusGate extends Gate
         move(getX(),getY());
         
         if(isTouching(Player.class)) {
-            
+            GreenfootSound music = new GreenfootSound("coin.mp3");
+            music.setVolume(20);
+            music.play();
             world.add(this.value);
         }
        

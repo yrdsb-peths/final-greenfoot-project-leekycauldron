@@ -115,10 +115,6 @@ public class Main extends World
         }
         // Add the gates
         spawnGates();
-
-        // Play background music
-        GreenfootSound music = new GreenfootSound("winter.mp3");
-        music.playLoop();
         
         
         // Add the progress bar (timer).
