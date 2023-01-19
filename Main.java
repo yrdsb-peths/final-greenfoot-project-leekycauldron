@@ -4,7 +4,7 @@ import java.util.List;
  * This is where the main gameplay takes place,
  * 
  * @author Bryson Lee-Kwen
- * @version 2023-01-15
+ * @version 2023-01-18
  */
 public class Main extends World
 {
@@ -20,14 +20,17 @@ public class Main extends World
     public boolean damage = false;
     private SimpleTimer timer = new SimpleTimer();
     private SimpleTimer dTimer = new SimpleTimer();
-    Damage d = new Damage();
-    int tens = 0;
+    Damage d = new Damage(); // Damage indicator.
+    int tens = 0; // Used to keep track of time and when 10 seconds pass.
+    
     public Main()
     {    
         super(400, 600, 1);
         prepare();
         
     }
+    
+    // Overloaded methods for invoking a win/loss end screen.
     public void gameOver() {
         End end = new End();
         Greenfoot.setWorld(end);
@@ -38,8 +41,9 @@ public class Main extends World
     }
     
     
+    
+    // Remove all present gates and replace them with new ones.
     public void respawn() {
-        
         
         for(int i =0; i < 3;i++){
             Gate gate = getObjects(Gate.class).get(0);
@@ -47,11 +51,15 @@ public class Main extends World
             removeObject(gate);
         }
         
-        
-        
         spawnGates();
         
     }
+    
+    /**Takes a value n and either adds/subtracts/multiplies/divides the value by n.
+    Invokes the respawn function, invoked when hit by player.
+       
+    @param n a value given by the Gate touched which is randomly generated
+       **/
     public void add(int n) {
         getObjects(Player.class).get(0).value += n;
         respawn();
@@ -75,17 +83,31 @@ public class Main extends World
         getObjects(Player.class).get(0).value /= n;
         respawn();
     }
+    
+    
+    
+    /**
+     * Returns a random number from 0-3 which determines which gate to spawn.
+     * 
+     * @return the number that represents the gate type.
+     */
     public int getGate(){
         return Greenfoot.getRandomNumber(4);
     }
     
+    /**
+     * Returns the time remaining in the game (60 second total).
+     * 
+     * @return time remaining.
+     */
     public int getTime() {
         return 60000 - this.timer.millisElapsed();
     }
     
-    
+    /**
+     * Spawns three gates of a random type.
+     */
     public void spawnGates() {
-        // TODO: make at least one gate above zero.
         for(int i = 0; i < 3;i++ ){
             
             if (getGate() == 0){
@@ -137,18 +159,22 @@ public class Main extends World
     }
     
     public void act() {
+        // End game if all money is gone.
         if(getObjects(Player.class).get(0).value <= 0 ){
             gameOver();   
-        }
+        } // End game if time is over (won).
         else if(this.timer.millisElapsed() >= 59999){
             gameOver(getObjects(Player.class).get(0).value); 
         }
         
+        // Show the damage indictor for one second, then remove.
         if(damage && this.dTimer.millisElapsed() >= 1000){
             damage = false;
             removeObject(d);
         }
         
+        
+        // Increase score every 10 seconds.
         if(this.timer.millisElapsed() / 10000 > this.tens) {
             this.tens = this.timer.millisElapsed() / 10000;
             this.playerSpeed++;

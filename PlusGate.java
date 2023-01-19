@@ -1,17 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class PlusGate here.
+ * Adds to the money.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Bryson Lee-Kwen
+ * @version 2023-01-18
  */
 public class PlusGate extends Gate
 {
-    /**
-     * Act - do whatever the PlusGate wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    // value that the money is added by.
     int value = Greenfoot.getRandomNumber(50)+1;
     Label label = new Label("+"+value,40);
     public PlusGate() {
@@ -23,6 +20,8 @@ public class PlusGate extends Gate
         getWorld().removeObject(this.label);
     }
     
+    
+    // Move down towards the bottom, while also checking if it hit the player.
     public void act()
     {
         

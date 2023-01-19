@@ -1,18 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Tutorial here.
+ * Show the tutorial.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Bryson Lee-Kwen
+ * @version 2023-01-18
  */
 public class Tutorial extends World
 {
 
-    /**
-     * Constructor for objects of class Tutorial.
-     * 
-     */
+    
     public Tutorial()
     {    
         super(400, 600, 1);

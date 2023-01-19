@@ -9,10 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    /**
-     * Act - do whatever the Player wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public int value = 0;
     int speed = 0;
     Label label = new Label(value,40);
@@ -32,16 +29,13 @@ public class Player extends Actor
         setImage(image);
         image.scale(90, 130);
     }
+    
+    // Used to update the speed.
+    // updated by one every 10 seconds.
     public void setSpeed(int s) {
         this.speed = s;
     }
-    public void add(int n) {
-        getWorld().getObjects(Player.class).get(0).value += n;
-    }
     
-    public void minus(int n) {
-        getWorld().getObjects(Player.class).get(0).value -= n;
-    }
     
     public void act()
     {
@@ -67,7 +61,7 @@ public class Player extends Actor
         
         cIdx++;
         
-        // Move forward and back every 1 second.
+        // Move forward and back every 1 second to create moving illusion.
         if (forward){
             setLocation(getX(),getY()+(this.speed/3));
         } else {

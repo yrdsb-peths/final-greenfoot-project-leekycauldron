@@ -1,31 +1,27 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Start here.
+ * The title screen at the start of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Bryson Lee-Kwen
+ * @version 2023-01-18
  */
 public class Start extends World
 {
 
-    /**
-     * Constructor for objects of class Start.
-     * 
-     */
+
     public Start()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        
         super(400, 600, 1);
         prepare();
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
+    
     private void prepare()
     {
+        // Add in all the title elements.
+        
         Logo l = new Logo();
         addObject(l,50,80);
 
@@ -46,6 +42,8 @@ public class Start extends World
 
     }
     
+    
+    // Listen for keypresses to either start the game or show the tutorial.
     public void act() {
         if(Greenfoot.isKeyDown("1")) {
             Main main = new Main();

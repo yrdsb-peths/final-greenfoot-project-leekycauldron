@@ -1,19 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Damage here.
+ * Does nothing other than show the damage indicator. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Bryson Lee-Kwen
+ * @version 2023-01-18
  */
 public class Damage extends Actor
 {
-    /**
-     * Act - do whatever the Damage wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public void act()
     {
-        // Add your action code here.
+       
     }
 }

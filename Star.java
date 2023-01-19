@@ -1,17 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Star here.
+ * One of hundreds of stars in the game background.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Bryson Lee-Kwen
+ * @version 2023-01-18
  */
 public class Star extends Actor
 {
-    /**
-     * Act - do whatever the Star wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     int interval = 0;
     private SimpleTimer timer = new SimpleTimer();
     private boolean sparkle = false;
@@ -24,7 +21,8 @@ public class Star extends Actor
     }
     public void act()
     {
-        // Add your action code here.
+        // Sparkles every x seconds for exactly half a second.
+        
         if(!sparkle && this.timer.millisElapsed() > interval) {
             sparkle = true;
             this.timer.mark();
@@ -38,6 +36,8 @@ public class Star extends Actor
             img.scale(1, 1);
             setImage(img);
         }
+        
+        // Move to the bottom then back to the top to create a moving illusion.
         setRotation(270);
         Main world = (Main) getWorld();
         move(world.worldSpeed*-1);
