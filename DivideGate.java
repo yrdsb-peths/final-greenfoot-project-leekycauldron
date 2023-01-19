@@ -13,7 +13,7 @@ public class DivideGate extends Gate
      * Act - do whatever the DivideGate wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int value = Greenfoot.getRandomNumber(10) + 1;
+    int value = Greenfoot.getRandomNumber(5) + 1;
     Label label = new Label("÷"+value,40);
     
     public DivideGate(){

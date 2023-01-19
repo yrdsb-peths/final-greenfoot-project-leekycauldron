@@ -28,9 +28,12 @@ public class Main extends World
         prepare();
         
     }
-    
     public void gameOver() {
         End end = new End();
+        Greenfoot.setWorld(end);
+    }
+    public void gameOver(int val) {
+        End end = new End(val);
         Greenfoot.setWorld(end);
     }
     
@@ -134,9 +137,11 @@ public class Main extends World
     }
     
     public void act() {
-        if(getObjects(Player.class).get(0).value <= 0 
-        || this.timer.millisElapsed() >= 59999){
+        if(getObjects(Player.class).get(0).value <= 0 ){
             gameOver();   
+        }
+        else if(this.timer.millisElapsed() >= 59999){
+            gameOver(getObjects(Player.class).get(0).value); 
         }
         
         if(damage && this.dTimer.millisElapsed() >= 1000){
