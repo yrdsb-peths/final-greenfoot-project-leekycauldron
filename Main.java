@@ -17,7 +17,10 @@ public class Main extends World
     public boolean gates = true;
     public int worldSpeed = 3;
     public int playerSpeed = 4;
+    public boolean damage = false;
     private SimpleTimer timer = new SimpleTimer();
+    private SimpleTimer dTimer = new SimpleTimer();
+    Damage d = new Damage();
     public Main()
     {    
         super(400, 600, 1);
@@ -51,6 +54,9 @@ public class Main extends World
     }
     
     public void minus(int n) {
+        this.damage = true;
+        addObject(this.d,getWidth()/2,getHeight()/2);
+        this.dTimer.mark();
         getObjects(Player.class).get(0).value -= n;
         respawn();
     }
@@ -59,6 +65,9 @@ public class Main extends World
         respawn();
     }
     public void divide(int n) {
+        this.damage = true;
+        addObject(this.d,getWidth()/2,getHeight()/2);
+        this.dTimer.mark();
         getObjects(Player.class).get(0).value /= n;
         respawn();
     }
@@ -129,6 +138,10 @@ public class Main extends World
             gameOver();   
         }
         
+        if(damage && this.dTimer.millisElapsed() >= 1000){
+            damage = false;
+            removeObject(d);
+        }
 
     }
 }
