@@ -26,7 +26,7 @@ public class End extends World
     }
     
     // Constructor for win screen (when a value is provided)
-    public End(int val)
+    public End(long val)
     {
        super(400, 600, 1);
         // Set Background to complete darkness.
