@@ -15,7 +15,7 @@ public class Main extends World
      */
     public boolean respawn = false;
     public boolean gates = true;
-    public int worldSpeed = 3;
+    public int worldSpeed = 2;
     public int playerSpeed = 4;
     public boolean damage = false;
     private SimpleTimer timer = new SimpleTimer();
@@ -35,7 +35,7 @@ public class Main extends World
         End end = new End();
         Greenfoot.setWorld(end);
     }
-    public void gameOver(int val) {
+    public void gameOver(long val) {
         End end = new End(val);
         Greenfoot.setWorld(end);
     }

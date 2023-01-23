@@ -10,9 +10,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Player extends Actor
 {
 
-    public int value = 0;
+    public long value = 0;
     int speed = 0;
-    Label label = new Label(value,40);
+    Label label = new Label(value+"",40);
     
     // Used to create moving motion (back and forth).
     boolean forward = true; 
@@ -22,7 +22,7 @@ public class Player extends Actor
     String[] costumes = {"rocket1.png","rocket2.png","rocket3.png"};
     int cIdx = 1;
     
-    public Player(int value, int speed) {
+    public Player(long value, int speed) {
         this.speed = speed;
         this.value = value;
         GreenfootImage image = getImage();
@@ -67,7 +67,7 @@ public class Player extends Actor
         } else {
             setLocation(getX(),getY()-(this.speed/3));
         }
-        if(System.currentTimeMillis() - last > 1000) {
+        if(System.currentTimeMillis() - last > 500) {
             last = System.currentTimeMillis();
             forward = !forward;
         }
